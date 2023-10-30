@@ -23,23 +23,20 @@ class MainActivity : AppCompatActivity() {
         var now = 0
         adapter = MainAdapter()
         rv.adapter = adapter
+        val ll : LinearLayout = findViewById(R.id.linear_layout)
+        val layoutParams = rv.layoutParams as LinearLayout.LayoutParams
         if (this.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            rv.layoutManager = GridLayoutManager(this, 4)
-            val layoutParams = rv.layoutParams as LinearLayout.LayoutParams
+            rv.layoutManager = GridLayoutManager(this, resources.getInteger(R.integer.LANDSCAPE_ITEMS_COUNT))
             layoutParams.height = LinearLayout.LayoutParams.MATCH_PARENT
             layoutParams.width = 0
-            var ll : LinearLayout = findViewById(R.id.linear_layout)
             ll.orientation = LinearLayout.HORIZONTAL
-            rv.layoutParams = layoutParams
         } else {
-            rv.layoutManager = GridLayoutManager(this, 3)
-            val layoutParams = rv.layoutParams as LinearLayout.LayoutParams
+            rv.layoutManager = GridLayoutManager(this, resources.getInteger(R.integer.PORTRAIT_ITEMS_COUNT))
             layoutParams.height = 0
             layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT
-            var ll : LinearLayout = findViewById(R.id.linear_layout)
             ll.orientation = LinearLayout.VERTICAL
-            rv.layoutParams = layoutParams
         }
+        rv.layoutParams = layoutParams
         val fab : FloatingActionButton = findViewById(R.id.button_add)
         savedInstanceState?.let {
             for(i in 0 until it.getInt("size")){
