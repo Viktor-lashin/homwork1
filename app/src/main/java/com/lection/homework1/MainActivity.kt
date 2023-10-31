@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         rv.layoutParams = layoutParams
         val fab : FloatingActionButton = findViewById(R.id.button_add)
         savedInstanceState?.let {
-            for(i in 0 until it.getInt("size")){
+            for(i in 0 until it.getInt(resources.getString(R.string.kay))){
                 adapter.add(Quadrate(now))
                 now += 1
             }
@@ -53,6 +53,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt("size", adapter.itemCount)
+        outState.putInt(resources.getString(R.string.kay), adapter.itemCount)
     }
 }
