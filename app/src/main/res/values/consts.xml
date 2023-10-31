@@ -1,4 +1,5 @@
 <resources>
     <integer name="PORTRAIT_ITEMS_COUNT">3</integer>
     <integer name="LANDSCAPE_ITEMS_COUNT">4</integer>
+    <string name="key">size</string>
 </resources>
